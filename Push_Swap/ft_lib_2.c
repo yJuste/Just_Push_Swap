@@ -12,12 +12,12 @@
 #include "ft_pshswp.h"
 
 // -------------------------PROTOTYPE-------------------------
-int		t_lstsize(t_stack *lst);
+int		ft_list_size(t_stack *lst);
 // -------------------------PROTOTYPE-------------------------
 
-int	ft_lstsize(t_stack *lst)
+int	ft_list_size(t_stack *lst)
 {
-	size_t	i;
+	int		i;
 
 	i = 0;
 	while (lst)

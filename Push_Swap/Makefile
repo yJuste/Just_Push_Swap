@@ -3,8 +3,8 @@ NAME = push_swap
 CC = cc
 CFLAGS = -g
 
-SRC =	ft_push_swap.c		\
-	ft_push_swap_lib.c	\
+SRC =	ft_pshswp.c		\
+	ft_lib.c		\
 
 OBJ = $(SRC:.c=.o)
 

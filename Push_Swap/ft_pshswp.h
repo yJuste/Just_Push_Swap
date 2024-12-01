@@ -33,21 +33,21 @@ typedef struct s_stack
 
 //	---------- MY CODE ----------
 
-// ft_push_swap.c
+// ft_pshswp.c
 
 int		main(int argc, char **argv);
-int		ft_duplicate(t_stack *a);
-int		ft_issorted(t_stack *a);
-t_stack	*ft_init(int argc, char **argv);
-t_stack	*ft_two_params(char **argv);
 
-// ft_push_swap_lib.c
+// ft_lib.c
 
-t_stack	*ft_lstnew_pushswap(int content);
-t_stack	*ft_lstlast_pushswap(t_stack *lst);
-void	ft_lstclear_pushswap(t_stack **lst);
-void	ft_lstadd_back_pushswap(t_stack **lst, t_stack *new);
-void	ft_lstadd_front_pushswap(t_stack **lst, t_stack *new);
+t_stack	*ft_list_new(int n);
+t_stack	*ft_list_last(t_stack *lst);
+void	ft_list_clear(t_stack **lst);
+void	ft_list_add_back(t_stack **lst, t_stack *new);
+void	ft_list_add_front(t_stack **lst, t_stack *new);
+
+// ft_lib2.c
+
+int		ft_list_size(t_stack *lst);
 
 #endif
 

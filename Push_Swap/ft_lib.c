@@ -11,62 +11,59 @@
 /* ************************************************************************** */
 #include "ft_pshswp.h"
 
-// -------------------------PROTOTYPE-------------------------
-t_stack	*ft_lstnew_pushswap(int content);
-t_stack	*ft_lstlast_pushswap(t_stack *lst);
-void	ft_lstclear_pushswap(t_stack **lst);
-void	ft_lstadd_back_pushswap(t_stack **lst, t_stack *new);
-void	ft_lstadd_front_pushswap(t_stack **lst, t_stack *new);
-// -----------------------------------------------------------
+// ---------------------PROTOTYPE----------------------
+t_stack	*ft_list_new(int n);
+t_stack	*ft_list_last(t_stack *lst);
+void	ft_list_clear(t_stack **lst);
+void	ft_list_add_back(t_stack **lst, t_stack *new);
+void	ft_list_add_front(t_stack **lst, t_stack *new);
+// ----------------------------------------------------
 
-t_stack	*ft_lstnew_pushswap(int nbr)
+t_stack	*ft_list_new(int n)
 {
-	t_stack		*elem;
+	t_stack		*new;
 
-	elem = malloc(sizeof(t_stack));
-	if (!elem)
-		ft_error(-4);
-	elem->nbr = nbr;
-	elem->next = NULL;
-	return (elem);
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		return (NULL);
+	new->nbr = n;
+	new->next = NULL;
+	return (new);
 }
 
-t_stack	*ft_lstlast_pushswap(t_stack *lst)
+t_stack	*ft_list_last(t_stack *lst)
 {
-	if (!lst)
-		return (NULL);
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
 }
 
-void	ft_lstclear_pushswap(t_stack **lst)
+void	ft_list_clear(t_stack **lst)
 {
-	t_stack		*tmp;
+	t_stack		*next;
 
 	if (!lst)
 		return ;
 	while (*lst)
 	{
-		tmp = (*lst)->next;
-		(*lst)->nbr = 0;
+		next = (*lst)->next;
 		free(*lst);
-		*lst = tmp;
+		*lst = next;
 	}
 	*lst = NULL;
 }
 
-void	ft_lstadd_back_pushswap(t_stack **lst, t_stack *new)
+void	ft_list_add_back(t_stack **lst, t_stack *new)
 {
 	if (!lst)
 		return ;
-	if (!*lst)
+	if (!(*lst))
 		ft_lstadd_front_pushswap(lst, new);
 	else
-		(ft_lstlast_pushswap(*lst))->next = new;
+		(ft_list_last(*lst))->next = new;
 }
 
-void	ft_lstadd_front_pushswap(t_stack **lst, t_stack *new)
+void	ft_list_add_front(t_stack **lst, t_stack *new)
 {
 	new->next = *lst;
 	*lst = new;
