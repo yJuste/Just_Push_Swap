@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lib.c                                           :+:      :+:    :+:   */
+/*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,57 +12,42 @@
 #include "ft_pshswp.h"
 
 // -------------------------PROTOTYPE--------------------------
-int			ft_list_size(t_stack *lst);
-t_stack		*ft_list_new(int n);
-t_stack		*ft_list_last(t_stack *lst);
-void		ft_list_add_back(t_stack **lst, t_stack *new);
-void		ft_list_add_front(t_stack **lst, t_stack *new);
+void		ft_sort_three(t_stack **a);
+int			ft_find_index(t_stack *a, int nbr);
 // ------------------------------------------------------------
 
-t_stack	*ft_list_new(int n)
+void	ft_sort_three(t_stack **a)
 {
-	t_stack		*new;
-
-	new = malloc(sizeof(t_stack));
-	if (!new)
-		return (NULL);
-	new->nbr = n;
-	new->next = NULL;
-	return (new);
+	if (ft_list_min(*a) == (*a)->nbr)
+	{
+		ft_rra(a, 0);
+		ft_sa(a, 0);
+	}
+	else if (ft_list_max(*a) == (*a)->nbr)
+	{
+		ft_ra(a, 0);
+		if (!ft_issorted(*a))
+			ft_sa(a, 0);
+	}
+	else
+	{
+		if (ft_find_index(*a, ft_list_max(*a)) == 1)
+			ft_rra(a, 0);
+		else
+			ft_sa(a, 0);
+	}
 }
 
-t_stack	*ft_list_last(t_stack *lst)
-{
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
-
-int	ft_list_size(t_stack *lst)
+int	ft_find_index(t_stack *a, int nbr)
 {
 	int		i;
 
 	i = 0;
-	while (lst)
+	while (a->nbr != nbr)
 	{
-		lst = lst->next;
 		i++;
+		a = a->next;
 	}
+	a->index = 0;
 	return (i);
-}
-
-void	ft_list_add_back(t_stack **lst, t_stack *new)
-{
-	if (!lst)
-		return ;
-	if (!(*lst))
-		ft_list_add_front(lst, new);
-	else
-		(ft_list_last(*lst))->next = new;
-}
-
-void	ft_list_add_front(t_stack **lst, t_stack *new)
-{
-	new->next = *lst;
-	*lst = new;
 }

@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 #include "ft_pshswp.h"
 
-// ----------------PROTOTYPE----------------
-int		main(int argc, char **argv);
-t_stack	*ft_init(int argc, char **argv);
-t_stack	*ft_two_params(char **argv);
-int		ft_duplicate(t_stack *a);
-int		ft_issorted(t_stack *a);
-// -----------------------------------------
+// --------------------PROTOTYPE--------------------
+int			main(int argc, char **argv);
+t_stack		*ft_init(int argc, char **argv);
+t_stack		*ft_two_params(char **argv);
+int			ft_duplicate(t_stack *a);
+int			ft_issorted(t_stack *a);
+// -------------------------------------------------
 
 int	main(int argc, char **argv)
 {
@@ -26,16 +26,15 @@ int	main(int argc, char **argv)
 	a = ft_init(argc, argv);
 	if (!a || ft_duplicate(a))
 	{
-		ft_lstclear_pushswap(&a);
-		ft_error(-2);
+		ft_list_clear(&a);
+		ft_error(4);
 	}
 	if (!ft_issorted(a))
 		ft_sort(&a);
-	ft_lstclear_pushswap(&a);
+	ft_list_clear(&a);
 	return (0);
 }
 
-/*
 t_stack	*ft_init(int argc, char **argv)
 {
 	t_stack		*a;
@@ -44,7 +43,7 @@ t_stack	*ft_init(int argc, char **argv)
 
 	a = NULL;
 	if (argc < 2)
-		ft_error(-1);
+		ft_error(1);
 	if (argc == 2)
 		a = ft_two_params(argv);
 	else
@@ -53,7 +52,7 @@ t_stack	*ft_init(int argc, char **argv)
 		while (i < argc)
 		{
 			j = ft_atoi_strict(argv[i]);
-			ft_lstadd_back_pushswap(&a, ft_lstnew_pushswap(j));
+			ft_list_add_back(&a, ft_list_new(j));
 			i++;
 		}
 	}
@@ -67,16 +66,17 @@ t_stack	*ft_two_params(char **argv)
 	int			i;
 	int			j;
 
+	i = 0;
 	a = NULL;
 	tmp = ft_split(argv[1], ' ');
-	i = 0;
 	while (tmp[i])
 	{
 		j = ft_atoi_strict(tmp[i]);
-		ft_lstadd_back_pushswap(&a, ft_lstnew_pushswap(j));
+		ft_list_add_back(&a, ft_list_new(j));
 		i++;
 	}
-	ft_free_str_2(tmp);
+	ft_free_strs(tmp);
+	free(tmp);
 	return (a);
 }
 
@@ -112,4 +112,3 @@ int	ft_issorted(t_stack *a)
 	}
 	return (1);
 }
-*/

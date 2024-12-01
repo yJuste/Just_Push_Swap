@@ -4,7 +4,13 @@ CC = cc
 CFLAGS = -g
 
 SRC =	ft_pshswp.c		\
+	ft_pshswp_2.c		\
+	ft_instructions.c	\
+	ft_sort.c		\
 	ft_lib.c		\
+	ft_lib_2.c		\
+	ft_lib_3.c		\
+	ft_split.c
 
 OBJ = $(SRC:.c=.o)
 
