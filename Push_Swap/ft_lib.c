@@ -11,58 +11,61 @@
 /* ************************************************************************** */
 #include "ft_pshswp.h"
 
-// -------------------------PROTOTYPE--------------------------
-int			ft_list_size(t_stack *lst);
-t_stack		*ft_list_new(int n);
-t_stack		*ft_list_last(t_stack *lst);
-void		ft_list_add_back(t_stack **lst, t_stack *new);
-void		ft_list_add_front(t_stack **lst, t_stack *new);
-// ------------------------------------------------------------
+// ----------------------PROTOTYPE----------------------
+int			ft_atoi_strict(const char *str);
+void		*ft_calloc(size_t count, size_t size);
+int			ft_isdigit(int c);
+// -----------------------------------------------------
 
-t_stack	*ft_list_new(int n)
+int	ft_atoi_strict(const char *str)
 {
-	t_stack		*new;
+	int				sign;
+	long long int	res;
 
-	new = malloc(sizeof(t_stack));
-	if (!new)
-		return (NULL);
-	new->nbr = n;
-	new->next = NULL;
-	return (new);
+	res = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '+' || *str == '-')
+		str++;
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			ft_error(2);
+		res = res * 10 + *str - '0';
+		str++;
+	}
+	if ((sign * res) > 2147483647
+		|| (sign * res) < -2147483648)
+		ft_error(3);
+	return (sign * res);
 }
 
-t_stack	*ft_list_last(t_stack *lst)
+void	*ft_calloc(size_t count, size_t size)
 {
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
-
-int	ft_list_size(t_stack *lst)
-{
-	int		i;
+	size_t		i;
+	size_t		total_size;
+	void		*ptr;
 
 	i = 0;
-	while (lst)
+	if (count == 0 || size == 0)
+		total_size = 0;
+	else
+		total_size = count * size;
+	ptr = malloc(total_size);
+	if (!ptr)
+		return (NULL);
+	while (i < total_size)
 	{
-		lst = lst->next;
+		((char *)ptr)[i] = 0;
 		i++;
 	}
-	return (i);
+	return (ptr);
 }
 
-void	ft_list_add_back(t_stack **lst, t_stack *new)
+int	ft_isdigit(int c)
 {
-	if (!lst)
-		return ;
-	if (!(*lst))
-		ft_list_add_front(lst, new);
-	else
-		(ft_list_last(*lst))->next = new;
-}
-
-void	ft_list_add_front(t_stack **lst, t_stack *new)
-{
-	new->next = *lst;
-	*lst = new;
+	return (c >= '0' && c <= '9');
 }

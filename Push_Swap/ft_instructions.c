@@ -13,6 +13,7 @@
 
 // -------------------------PROTOTYPE--------------------------
 void		ft_sa(t_stack **a, int flg);
+void		ft_pb(t_stack **a, t_stack **b, int flg);
 void		ft_ra(t_stack **a, int flg);
 void		ft_rra(t_stack **a, int flg);
 // ------------------------------------------------------------
@@ -32,7 +33,21 @@ void	ft_sa(t_stack **a, int flg)
 	return ;
 }
 
-void	ft_ra(t_stack **a, int j)
+void	ft_pb(t_stack **a, t_stack **b, int flg)
+{
+	t_stack		*tmp;
+
+	if (!*a)
+		return ;
+	tmp = *b;
+	*b = *a;
+	*a = (*a)->next;
+	(*b)->next = tmp;
+	if (flg == 0)
+		write(1, "pb\n", 3);
+}
+
+void	ft_ra(t_stack **a, int flg)
 {
 	t_stack	*tmp;
 
@@ -43,7 +58,7 @@ void	ft_ra(t_stack **a, int j)
 	(*a)->next = tmp;
 	*a = tmp->next;
 	tmp->next = NULL;
-	if (j == 0)
+	if (flg == 0)
 		write(1, "ra\n", 3);
 }
 

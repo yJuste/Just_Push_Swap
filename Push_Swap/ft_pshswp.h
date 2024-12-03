@@ -48,13 +48,14 @@ void		ft_sort(t_stack **a);
 // ft_instructions.c
 
 void		ft_sa(t_stack **a, int flg);
+void		ft_pb(t_stack **a, t_stack **b, int flg);
 void		ft_ra(t_stack **a, int flg);
 void		ft_rra(t_stack **a, int flg);
 
 // ft_sort.c
 
 void		ft_sort_three(t_stack **a);
-int			ft_find_index(t_stack *a, int nbr);
+int		ft_find_index(t_stack *a, int n);
 
 // ft_lib.c
 
