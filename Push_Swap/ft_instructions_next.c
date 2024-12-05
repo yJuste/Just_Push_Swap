@@ -13,19 +13,19 @@
 
 // ------------------PROTOTYPE------------------
 void		ft_rr(t_stack **a, t_stack **b);
-void		ft_rra(t_stack **a);
-void		ft_rrb(t_stack **b);
+void		ft_rra(t_stack **a, int flg);
+void		ft_rrb(t_stack **b, int flg);
 void		ft_rrr(t_stack **a, t_stack **b);
 // ---------------------------------------------
 
 void	ft_rr(t_stack **a, t_stack **b)
 {
-	ft_ra(a);
-	ft_rb(b);
+	ft_ra(a, 1);
+	ft_rb(b, 1);
 	write(1, "rr\n", 3);
 }
 
-void	ft_rra(t_stack **a)
+void	ft_rra(t_stack **a, int flg)
 {
 	int			i;
 	t_stack		*tmp;
@@ -46,10 +46,11 @@ void	ft_rra(t_stack **a)
 		i--;
 	}
 	tmp->next = NULL;
-	write(1, "rra\n", 4);
+	if (flg == 0)
+		write(1, "rra\n", 4);
 }
 
-void	ft_rrb(t_stack **b)
+void	ft_rrb(t_stack **b, int flg)
 {
 	int			i;
 	t_stack		*tmp;
@@ -70,12 +71,13 @@ void	ft_rrb(t_stack **b)
 		i--;
 	}
 	tmp->next = NULL;
-	write(1, "rrb\n", 4);
+	if (flg == 0)
+		write(1, "rrb\n", 4);
 }
 
 void	ft_rrr(t_stack **a, t_stack **b)
 {
-	ft_rra(a);
-	ft_rrb(b);
+	ft_rra(a, 1);
+	ft_rrb(b, 1);
 	write(1, "rrr\n", 4);
 }
