@@ -11,15 +11,17 @@
 /* ************************************************************************** */
 #include "ft_pshswp.h"
 
-// ----------------------PROTOTYPE-----------------------
-void		ft_sa(t_stack **a, int flg);
-void		ft_sb(t_stack **b, int flg);
-void		ft_ss(t_stack **a, t_stack **b, int flg);
-void		ft_pa(t_stack **a, t_stack **b, int flg);
-void		ft_pb(t_stack **a, t_stack **b, int flg);
-// ------------------------------------------------------
+// -----------------PROTOTYPE-------------------
+void		ft_sa(t_stack **a);
+void		ft_sb(t_stack **b);
+void		ft_ss(t_stack **a, t_stack **b);
+void		ft_pa(t_stack **a, t_stack **b);
+void		ft_pb(t_stack **a, t_stack **b);
+void		ft_ra(t_stack **a);
+void		ft_rb(t_stack **b);
+// ---------------------------------------------
 
-void	ft_sa(t_stack **a, int flg)
+void	ft_sa(t_stack **a)
 {
 	t_stack		*tmp;
 
@@ -29,12 +31,12 @@ void	ft_sa(t_stack **a, int flg)
 	*a = (*a)->next;
 	tmp->next = (*a)->next;
 	(*a)->next = tmp;
-	if (flg == 0)
-		write(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 	return ;
 }
 
-void	ft_sb(t_stack **b, int flg)
+/*	|--------- NEVER USED ---------|
+void	ft_sb(t_stack **b)
 {
 	t_stack		*tmp;
 
@@ -44,22 +46,17 @@ void	ft_sb(t_stack **b, int flg)
 	*b = (*b)->next;
 	tmp->next = (*b)->next;
 	(*b)->next = tmp;
-	if (flg == 0)
-		write(1, "sb\n", 3);
-}
-
-void	ft_ss(t_stack **a, t_stack **b, int flg)
+	write(1, "sb\n", 3);
+ }	|------------------------------|*/
+/*	|--------- NEVER USED ---------|
+void	ft_ss(t_stack **a, t_stack **b)
 {
-	int		flg_2;
+	ft_sa(a);
+	ft_sb(b);
+	write(1, "ss\n", 3);
+}	|------------------------------|*/
 
-	flg_2 = 1;
-	ft_sa(a, flg_2);
-	ft_sb(b, flg_2);
-	if (flg == 0)
-		write(1, "ss\n", 3);
-}
-
-void	ft_pa(t_stack **a, t_stack **b, int flg)
+void	ft_pa(t_stack **a, t_stack **b)
 {
 	t_stack		*tmp;
 
@@ -69,11 +66,10 @@ void	ft_pa(t_stack **a, t_stack **b, int flg)
 	*a = *b;
 	*b = (*b)->next;
 	(*a)->next = tmp;
-	if (flg == 0)
-		write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 }
 
-void	ft_pb(t_stack **a, t_stack **b, int flg)
+void	ft_pb(t_stack **a, t_stack **b)
 {
 	t_stack		*tmp;
 
@@ -83,6 +79,33 @@ void	ft_pb(t_stack **a, t_stack **b, int flg)
 	*b = *a;
 	*a = (*a)->next;
 	(*b)->next = tmp;
-	if (flg == 0)
-		write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
+}
+
+void	ft_ra(t_stack **a)
+{
+	t_stack		*tmp;
+
+	if (!*a || !(*a)->next)
+		return ;
+	tmp = *a;
+	*a = ft_list_last(*a);
+	(*a)->next = tmp;
+	*a = tmp->next;
+	tmp->next = NULL;
+	write(1, "ra\n", 3);
+}
+
+void	ft_rb(t_stack **b)
+{
+	t_stack		*tmp;
+
+	if (!*b || !(*b)->next)
+		return ;
+	tmp = *b;
+	*b = ft_list_last(*b);
+	(*b)->next = tmp;
+	*b = tmp->next;
+	tmp->next = NULL;
+	write(1, "rb\n", 3);
 }

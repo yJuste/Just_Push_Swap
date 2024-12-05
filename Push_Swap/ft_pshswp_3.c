@@ -27,9 +27,9 @@ t_stack	*ft_sort_b(t_flag *flg, t_stack **a)
 
 	b = NULL;
 	if (ft_list_size(*a) > 3 && !ft_issorted(*a))
-		ft_pb(a, &b, 0);
+		ft_pb(a, &b);
 	if (ft_list_size(*a) > 3 && !ft_issorted(*a))
-		ft_pb(a, &b, 0);
+		ft_pb(a, &b);
 	if (ft_list_size(*a) > 3 && !ft_issorted(*a))
 		ft_sort_b_next(flg, a, &b);
 	if (!ft_issorted(*a))
