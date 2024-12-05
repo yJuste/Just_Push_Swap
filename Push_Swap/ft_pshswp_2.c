@@ -11,10 +11,11 @@
 /* ************************************************************************** */
 #include "ft_pshswp.h"
 
-// -------------------------PROTOTYPE--------------------------
+// --------------------------PROTOTYPE---------------------------
 void		ft_sort(t_stack **a);
 void		ft_sort_three(t_stack **a);
-// ------------------------------------------------------------
+int			ft_parse(t_stack *a, t_stack *b, char s);
+// --------------------------------------------------------------
 
 void	ft_sort(t_stack **a)
 {
@@ -28,9 +29,8 @@ void	ft_sort(t_stack **a)
 		ft_sort_three(a);
 	else
 	{
-		b = ft_sort_b(a); // trie b
-		/*
-		a = ft_sort_a(a, &b); // prend b et trie a
+		b = ft_sort_b(a);
+		a = ft_sort_a(a, &b);
 		i = ft_find_index(*a, ft_list_min(*a));
 		if (i < ft_list_size(*a) - i)
 		{
@@ -41,7 +41,7 @@ void	ft_sort(t_stack **a)
 		{
 			while ((*a)->nbr != ft_list_min(*a))
 				ft_rra(a, 0);
-		}*/
+		}
 	}
 	return ;
 }
@@ -66,4 +66,32 @@ void	ft_sort_three(t_stack **a)
 		else
 			ft_sa(a, 0);
 	}
+}
+
+int	ft_parse(t_stack *a, t_stack *b, char s)
+{
+	int			i;
+	t_stack		*tmp;
+
+	if (s == 'a')
+		tmp = b;
+	else
+		tmp = a;
+	if (s == 'a')
+		i = ft_is_rrarrb(a, b, b->nbr, 'a');
+	else
+		i = ft_is_rrarrb(a, b, a->nbr, 'b');
+	while (tmp)
+	{
+		if (i > ft_is_rarb(a, b, tmp->nbr, s))
+			i = ft_is_rarb(a, b, tmp->nbr, s);
+		if (i > ft_is_rrarrb(a, b, tmp->nbr, s))
+			i = ft_is_rrarrb(a, b, tmp->nbr, s);
+		if (i > ft_is_rarrb(a, b, tmp->nbr, s))
+			i = ft_is_rarrb(a, b, tmp->nbr, s);
+		if (i > ft_is_rrarb(a, b, tmp->nbr, s))
+			i = ft_is_rrarb(a, b, tmp->nbr, s);
+		tmp = tmp->next;
+	}
+	return (i);
 }

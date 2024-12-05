@@ -51,13 +51,15 @@ int			ft_issorted(t_stack *a);
 
 void		ft_sort(t_stack **a);
 void		ft_sort_three(t_stack **a);
+int			ft_parse(t_stack *a, t_stack *b, char s);
 
-// ft_sort_b.c
+// ft_pshswp_3.c
 
 t_stack		*ft_sort_b(t_stack **a);
+t_stack		**ft_sort_a(t_stack **a, t_stack **b);
 void		ft_sort_b_next(t_stack **a, t_stack **b);
-int			ft_sort_b_parse(t_stack *a, t_stack *b);
 int			ft_find_place_b(t_stack *b, int n);
+int			ft_find_place_a(t_stack *a, int n);
 
 // ft_apply.c
 
