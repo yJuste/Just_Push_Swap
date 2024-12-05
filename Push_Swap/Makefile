@@ -55,4 +55,7 @@ rf: re
 s:
 	ls -lh $(NAME)
 
+help:
+	head -n 15 ft_pshswp.c
+
 .PHONY: all clean fclean re rf s
