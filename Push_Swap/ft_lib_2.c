@@ -10,29 +10,3 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_pshswp.h"
-
-// -------------------------PROTOTYPE--------------------------
-void		ft_free_strs(char **lst);
-void		ft_error(int err);
-// ------------------------------------------------------------
-
-void	ft_free_strs(char **str)
-{
-	char		*i;
-
-	if (!str)
-		return ;
-	while (*str)
-	{
-		i = *str;
-		free(i);
-		str++;
-	}
-	*str = NULL;
-}
-
-void	ft_error(int err)
-{
-	write(2, "Error\n", 6);
-	exit(err);
-}

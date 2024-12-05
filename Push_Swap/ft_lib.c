@@ -14,6 +14,8 @@
 // ----------------------PROTOTYPE----------------------
 int			ft_atoi_strict(const char *str);
 void		*ft_calloc(size_t count, size_t size);
+void		ft_free_strs(char **lst);
+void		ft_error(int err);
 int			ft_isdigit(int c);
 // -----------------------------------------------------
 
@@ -63,6 +65,27 @@ void	*ft_calloc(size_t count, size_t size)
 		i++;
 	}
 	return (ptr);
+}
+
+void	ft_free_strs(char **str)
+{
+	char		*i;
+
+	if (!str)
+		return ;
+	while (*str)
+	{
+		i = *str;
+		free(i);
+		str++;
+	}
+	*str = NULL;
+}
+
+void	ft_error(int err)
+{
+	write(2, "Error\n", 6);
+	exit(err);
 }
 
 int	ft_isdigit(int c)

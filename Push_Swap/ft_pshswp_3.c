@@ -11,17 +11,17 @@
 /* ************************************************************************** */
 #include "ft_pshswp.h"
 
-// -----------------------PROTOTYPE------------------------
-t_stack		*ft_sort_b(t_stack **a);
-t_stack		**ft_sort_a(t_stack **a, t_stack **b);
-void		ft_sort_b_next(t_stack **a, t_stack **b);
+// ----------------------------PROTOTYPE-------------------------------
+t_stack		*ft_sort_b(t_flag *flag, t_stack **a);
+t_stack		**ft_sort_a(t_flag *flag, t_stack **a, t_stack **b);
+void		ft_sort_b_next(t_flag *flag, t_stack **a, t_stack **b);
 int			ft_find_place_b(t_stack *b, int n);
 int			ft_find_place_a(t_stack *a, int n);
-// --------------------------------------------------------
+// --------------------------------------------------------------------
 
 //	---------- PART B ----------
 
-t_stack	*ft_sort_b(t_stack **a)
+t_stack	*ft_sort_b(t_flag *flg, t_stack **a)
 {
 	t_stack		*b;
 
@@ -31,13 +31,13 @@ t_stack	*ft_sort_b(t_stack **a)
 	if (ft_list_size(*a) > 3 && !ft_issorted(*a))
 		ft_pb(a, &b, 0);
 	if (ft_list_size(*a) > 3 && !ft_issorted(*a))
-		ft_sort_b_next(a, &b);
+		ft_sort_b_next(flg, a, &b);
 	if (!ft_issorted(*a))
 		ft_sort_three(a);
 	return (b);
 }
 
-void	ft_sort_b_next(t_stack **a, t_stack **b)
+void	ft_sort_b_next(t_flag *flg, t_stack **a, t_stack **b)
 {
 	int			i;
 	t_stack		*tmp;
@@ -45,17 +45,17 @@ void	ft_sort_b_next(t_stack **a, t_stack **b)
 	while (ft_list_size(*a) > 3 && !ft_issorted(*a))
 	{
 		tmp = *a;
-		i = ft_parse(*a, *b, 'b');
+		i = ft_parse(*a, *b, flg->b);
 		while (i >= 0)
 		{
-			if (i == ft_is_rarb(*a, *b, tmp->nbr, 'b'))
-				i = ft_apply_rarb(a, b, tmp->nbr, 'b');
-			else if (i == ft_is_rrarrb(*a, *b, tmp->nbr, 'b'))
-				i = ft_apply_rrarrb(a, b, tmp->nbr, 'b');
-			else if (i == ft_is_rarrb(*a, *b, tmp->nbr, 'b'))
-				i = ft_apply_rarrb(a, b, tmp->nbr, 'b');
-			else if (i == ft_is_rrarb(*a, *b, tmp->nbr, 'b'))
-				i = ft_apply_rrarb(a, b, tmp->nbr, 'b');
+			if (i == ft_is_rarb(*a, *b, tmp->nbr, flg->b))
+				i = ft_apply_rarb(a, b, tmp->nbr, flg->b);
+			else if (i == ft_is_rrarrb(*a, *b, tmp->nbr, flg->b))
+				i = ft_apply_rrarrb(a, b, tmp->nbr, flg->b);
+			else if (i == ft_is_rarrb(*a, *b, tmp->nbr, flg->b))
+				i = ft_apply_rarrb(a, b, tmp->nbr, flg->b);
+			else if (i == ft_is_rrarb(*a, *b, tmp->nbr, flg->b))
+				i = ft_apply_rrarb(a, b, tmp->nbr, flg->b);
 			else
 				tmp = tmp->next;
 		}
@@ -87,7 +87,7 @@ int	ft_find_place_b(t_stack *b, int n)
 
 //	---------- PART A ----------
 
-t_stack	**ft_sort_a(t_stack **a, t_stack **b)
+t_stack	**ft_sort_a(t_flag *flg, t_stack **a, t_stack **b)
 {
 	int			i;
 	t_stack		*tmp;
@@ -95,17 +95,17 @@ t_stack	**ft_sort_a(t_stack **a, t_stack **b)
 	while (*b)
 	{
 		tmp = *b;
-		i = ft_parse(*a, *b, 'a');
+		i = ft_parse(*a, *b, flg->a);
 		while (i >= 0)
 		{
-			if (i == ft_is_rarb(*a, *b, tmp->nbr, 'a'))
-				i = ft_apply_rarb(a, b, tmp->nbr, 'a');
-			else if (i == ft_is_rarrb(*a, *b, tmp->nbr, 'a'))
-				i = ft_apply_rarrb(a, b, tmp->nbr, 'a');
-			else if (i == ft_is_rrarrb(*a, *b, tmp->nbr, 'a'))
-				i = ft_apply_rrarrb(a, b, tmp->nbr, 'a');
-			else if (i == ft_is_rrarb(*a, *b, tmp->nbr, 'a'))
-				i = ft_apply_rrarb(a, b, tmp->nbr, 'a');
+			if (i == ft_is_rarb(*a, *b, tmp->nbr, flg->a))
+				i = ft_apply_rarb(a, b, tmp->nbr, flg->a);
+			else if (i == ft_is_rarrb(*a, *b, tmp->nbr, flg->a))
+				i = ft_apply_rarrb(a, b, tmp->nbr, flg->a);
+			else if (i == ft_is_rrarrb(*a, *b, tmp->nbr, flg->a))
+				i = ft_apply_rrarrb(a, b, tmp->nbr, flg->a);
+			else if (i == ft_is_rrarb(*a, *b, tmp->nbr, flg->a))
+				i = ft_apply_rrarb(a, b, tmp->nbr, flg->a);
 			else
 				tmp = tmp->next;
 		}

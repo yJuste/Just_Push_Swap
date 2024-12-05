@@ -28,13 +28,12 @@ typedef struct s_stack
 	long			nbr;
 	long			index;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 }	t_stack;
 
 typedef struct s_flag
 {
-	int		a;
-	int		b;
+	char		a;
+	char		b;
 }	t_flag;
 
 //	---------- MY CODE ----------
@@ -55,9 +54,9 @@ int			ft_parse(t_stack *a, t_stack *b, char s);
 
 // ft_pshswp_3.c
 
-t_stack		*ft_sort_b(t_stack **a);
-t_stack		**ft_sort_a(t_stack **a, t_stack **b);
-void		ft_sort_b_next(t_stack **a, t_stack **b);
+t_stack		*ft_sort_b(t_flag *flag, t_stack **a);
+t_stack		**ft_sort_a(t_flag *flag, t_stack **a, t_stack **b);
+void		ft_sort_b_next(t_flag *flag, t_stack **a, t_stack **b);
 int			ft_find_place_b(t_stack *b, int n);
 int			ft_find_place_a(t_stack *a, int n);
 
@@ -95,6 +94,14 @@ void		ft_rra(t_stack **a, int flg);
 void		ft_rrb(t_stack **b, int flg);
 void		ft_rrr(t_stack **a, t_stack **b, int flg);
 
+// ft_lib.c
+
+int			ft_atoi_strict(const char *str);
+void		*ft_calloc(size_t count, size_t size);
+void		ft_free_strs(char **lst);
+void		ft_error(int err);
+int			ft_isdigit(int c);
+
 // ft_list_lib.c
 
 t_stack		*ft_list_new(int n);
@@ -109,17 +116,6 @@ int			ft_find_index(t_stack *a, int n);
 int			ft_list_min(t_stack *a);
 int			ft_list_max(t_stack *a);
 void		ft_list_clear(t_stack **lst);
-
-// ft_lib.c
-
-int			ft_atoi_strict(const char *str);
-void		*ft_calloc(size_t count, size_t size);
-int			ft_isdigit(int c);
-
-// ft_lib_2.c
-
-void		ft_free_strs(char **lst);
-void		ft_error(int err);
 
 // ft_split.c
 
