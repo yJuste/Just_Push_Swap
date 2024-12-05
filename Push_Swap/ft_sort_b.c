@@ -45,13 +45,13 @@ void	ft_sort_b_next(t_stack **a, t_stack **b)
 		i = ft_sort_b_parse(*a, *b);
 		while (i >= 0)
 		{
-			if (i == ft_is_rarb(*a, *b, tmp->nbr))
+			if (i == ft_is_rarb(*a, *b, tmp->nbr, 'b'))
 				i = ft_apply_rarb(a, b, tmp->nbr, 'b');
-			else if (i == ft_is_rrarrb(*a, *b, tmp->nbr))
+			else if (i == ft_is_rrarrb(*a, *b, tmp->nbr, 'b'))
 				i = ft_apply_rrarrb(a, b, tmp->nbr, 'b');
-			else if (i == ft_is_rarrb(*a, *b, tmp->nbr))
+			else if (i == ft_is_rarrb(*a, *b, tmp->nbr, 'b'))
 				i = ft_apply_rarrb(a, b, tmp->nbr, 'b');
-			else if (i == ft_is_rrarb(*a, *b, tmp->nbr))
+			else if (i == ft_is_rrarb(*a, *b, tmp->nbr, 'b'))
 				i = ft_apply_rrarb(a, b, tmp->nbr, 'b');
 			else
 				tmp = tmp->next;
@@ -65,17 +65,17 @@ int	ft_sort_b_parse(t_stack *a, t_stack *b)
 	t_stack		*tmp;
 
 	tmp = a;
-	i = ft_is_rrarrb(a, b, a->nbr);
+	i = ft_is_rrarrb(a, b, a->nbr, 'b');
 	while (tmp)
 	{
-		if (i > ft_is_rarb(a, b, tmp->nbr))
-			i = ft_is_rarb(a, b, tmp->nbr);
-		if (i > ft_is_rrarrb(a, b, tmp->nbr))
-			i = ft_is_rrarrb(a, b, tmp->nbr);
-		if (i > ft_is_rarrb(a, b, tmp->nbr))
-			i = ft_is_rarrb(a, b, tmp->nbr);
-		if (i > ft_is_rrarb(a, b, tmp->nbr))
-			i = ft_is_rrarb(a, b, tmp->nbr);
+		if (i > ft_is_rarb(a, b, tmp->nbr, 'b'))
+			i = ft_is_rarb(a, b, tmp->nbr, 'b');
+		if (i > ft_is_rrarrb(a, b, tmp->nbr, 'b'))
+			i = ft_is_rrarrb(a, b, tmp->nbr, 'b');
+		if (i > ft_is_rarrb(a, b, tmp->nbr, 'b'))
+			i = ft_is_rarrb(a, b, tmp->nbr, 'b');
+		if (i > ft_is_rrarb(a, b, tmp->nbr, 'b'))
+			i = ft_is_rrarb(a, b, tmp->nbr, 'b');
 		tmp = tmp->next;
 	}
 	return (i);
@@ -83,8 +83,8 @@ int	ft_sort_b_parse(t_stack *a, t_stack *b)
 
 int	ft_find_place_b(t_stack *b, int n)
 {
-	int		i;
-	t_stack	*tmp;
+	int			i;
+	t_stack		*tmp;
 
 	i = 1;
 	if (n > b->nbr && n < ft_list_last(b)->nbr)

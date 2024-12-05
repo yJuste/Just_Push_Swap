@@ -68,10 +68,10 @@ int			ft_apply_rarrb(t_stack **a, t_stack **b, int c, char s);
 
 // ft_is.c
 
-int			ft_is_rarb(t_stack *a, t_stack *b, int c);
-int			ft_is_rrarrb(t_stack *a, t_stack *b, int c);
-int			ft_is_rrarb(t_stack *a, t_stack *b, int c);
-int			ft_is_rarrb(t_stack *a, t_stack *b, int c);
+int			ft_is_rarb(t_stack *a, t_stack *b, int c, char s);
+int			ft_is_rrarrb(t_stack *a, t_stack *b, int c, char s);
+int			ft_is_rrarb(t_stack *a, t_stack *b, int c, char s);
+int			ft_is_rarrb(t_stack *a, t_stack *b, int c, char s);
 
 // ft_instructions.c
 

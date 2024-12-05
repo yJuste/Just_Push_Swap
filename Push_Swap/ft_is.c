@@ -11,53 +11,91 @@
 /* ************************************************************************** */
 #include "ft_pshswp.h"
 
-// ------------------------PROTOTYPE------------------------
-int		ft_is_rarb(t_stack *a, t_stack *b, int c);
-int		ft_is_rrarrb(t_stack *a, t_stack *b, int c);
-int		ft_is_rrarb(t_stack *a, t_stack *b, int c);
-int		ft_is_rarrb(t_stack *a, t_stack *b, int c);
-// ---------------------------------------------------------
+// ---------------------------PROTOTYPE-----------------------------
+int		ft_is_rarb(t_stack *a, t_stack *b, int c, char s);
+int		ft_is_rrarrb(t_stack *a, t_stack *b, int c, char s);
+int		ft_is_rrarb(t_stack *a, t_stack *b, int c, char s);
+int		ft_is_rarrb(t_stack *a, t_stack *b, int c, char s);
+// -----------------------------------------------------------------
 
-int	ft_is_rarb(t_stack *a, t_stack *b, int c)
-{
-	int		i;
-
-	i = ft_find_place_b(b, c);
-	if (i < ft_find_index(a, c))
-		i = ft_find_index(a, c);
-	return (i);
-}
-
-int	ft_is_rrarrb(t_stack *a, t_stack *b, int c)
+int	ft_is_rarb(t_stack *a, t_stack *b, int c, char s)
 {
 	int		i;
 
 	i = 0;
-	if (ft_find_place_b(b, c))
-		i = ft_list_size(b) - ft_find_place_b(b, c);
-	if ((i < (ft_list_size(a) - ft_find_index(a, c))) && ft_find_index(a, c))
-		i = ft_list_size(a) - ft_find_index(a, c);
+	/*if (s == 'a')
+	{
+		i = ft_find_place_a(a, c);
+		if (i < ft_find_index(b, c))
+			i = ft_find_index(b, c);
+	}*/
+	if (s == 'b')
+	{
+		i = ft_find_place_b(b, c);
+		if (i < ft_find_index(a, c))
+			i = ft_find_index(a, c);
+	}
 	return (i);
 }
 
-int	ft_is_rrarb(t_stack *a, t_stack *b, int c)
+int	ft_is_rrarrb(t_stack *a, t_stack *b, int c, char s)
 {
 	int		i;
 
 	i = 0;
-	if (ft_find_index(a, c))
-		i = ft_list_size(a) - ft_find_index(a, c);
-	i = ft_find_place_b(b, c) + i;
+	/*if (s == 'a')
+	{
+		if (ft_find_place_a(a, c))
+			i = ft_lstsize(a) - ft_find_place_a(a, c);
+		if ((i < (ft_lstsize(b) - ft_find_index(b, c))) && ft_find_index(b, c))
+			i = ft_lstsize(b) - ft_find_index(b, c);
+	}*/
+	if (s == 'b')
+	{
+		if (ft_find_place_b(b, c))
+			i = ft_list_size(b) - ft_find_place_b(b, c);
+		if ((i < (ft_list_size(a) - ft_find_index(a, c))) && ft_find_index(a, c))
+			i = ft_list_size(a) - ft_find_index(a, c);
+	}
 	return (i);
 }
 
-int	ft_is_rarrb(t_stack *a, t_stack *b, int c)
+int	ft_is_rrarb(t_stack *a, t_stack *b, int c, char s)
 {
 	int		i;
 
 	i = 0;
-	if (ft_find_place_b(b, c))
-		i = ft_list_size(b) - ft_find_place_b(b, c);
-	i = ft_find_index(a, c) + i;
+	/*if (s == 'a')
+	{
+		if (ft_find_place_a(a, c))
+			i = ft_lstsize(a) - ft_find_place_a(a, c);
+		i = ft_find_index(b, c) + i;
+	}*/
+	if (s == 'b')
+	{
+		if (ft_find_index(a, c))
+			i = ft_list_size(a) - ft_find_index(a, c);
+		i = ft_find_place_b(b, c) + i;
+	}
+	return (i);
+}
+
+int	ft_is_rarrb(t_stack *a, t_stack *b, int c, char s)
+{
+	int		i;
+
+	i = 0;
+	/*if (s == 'a')
+	{
+		if (ft_find_index(b, c))
+			i = ft_lstsize(b) - ft_find_index(b, c);
+		i = ft_find_place_a(a, c) + i;
+	}*/
+	if (s == 'b')
+	{
+		if (ft_find_place_b(b, c))
+			i = ft_list_size(b) - ft_find_place_b(b, c);
+		i = ft_find_index(a, c) + i;
+	}
 	return (i);
 }
