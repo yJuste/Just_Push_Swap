@@ -5,10 +5,9 @@ CFLAGS = -g
 
 SRC =	ft_pshswp.c		\
 	ft_pshswp_2.c		\
-	ft_sort_a.c		\
-	ft_sort_a_next.c	\
 	ft_sort_b.c		\
-	ft_sort_b_next.c	\
+	ft_apply.c		\
+	ft_is.c			\
 	ft_instructions.c	\
 	ft_lib.c		\
 	ft_lib_2.c		\

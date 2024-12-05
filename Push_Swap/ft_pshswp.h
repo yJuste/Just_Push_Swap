@@ -21,7 +21,7 @@
 
 # include "Printf/ft_printf.h"
 
-// Structure
+// Structures
 
 typedef struct s_stack
 {
@@ -30,6 +30,12 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
+
+typedef struct s_flag
+{
+	int		a;
+	int		b;
+}	t_flag;
 
 //	---------- MY CODE ----------
 
@@ -44,40 +50,74 @@ int			ft_issorted(t_stack *a);
 // ft_pshswp_2.c
 
 void		ft_sort(t_stack **a);
+void		ft_sort_three(t_stack **a);
+
+// ft_sort_b.c
+
+t_stack		*ft_sort_b(t_stack **a, t_stack **b);
+void		ft_sort_b_next(t_stack **a, t_stack **b);
+int			ft_sort_b_parse(t_stack *a, t_stack *b);
+int			ft_find_place_b(t_stack *b, int n);
+
+// ft_apply.c
+
+int			ft_apply_rarb(t_stack **a, t_stack **b, int c, char s);
+int			ft_apply_rrarrb(t_stack **a, t_stack **b, int c, char s);
+int			ft_apply_rrarb(t_stack **a, t_stack **b, int c, char s);
+int			ft_apply_rarrb(t_stack **a, t_stack **b, int c, char s);
+
+// ft_is.c
+
+int			ft_is_rarb(t_stack *a, t_stack *b, int c);
+int			ft_is_rrarrb(t_stack *a, t_stack *b, int c);
+int			ft_is_rrarb(t_stack *a, t_stack *b, int c);
+int			ft_is_rarrb(t_stack *a, t_stack *b, int c);
 
 // ft_instructions.c
 
 void		ft_sa(t_stack **a, int flg);
+void		ft_sb(t_stack **b, int flg);
+void		ft_ss(t_stack **a, t_stack **b, int flg);
+void		ft_pa(t_stack **a, t_stack **b, int flg);
 void		ft_pb(t_stack **a, t_stack **b, int flg);
+
+// ft_instructions_next.c
+
 void		ft_ra(t_stack **a, int flg);
+void		ft_rb(t_stack **b, int flg);
+void		ft_rr(t_stack **a, t_stack **b, int flg);
+
+// ft_instructions_next_2.c
+
 void		ft_rra(t_stack **a, int flg);
+void		ft_rrb(t_stack **b, int flg);
+void		ft_rrr(t_stack **a, t_stack **b, int flg);
 
-// ft_sort.c
+// ft_list_lib.c
 
-void		ft_sort_three(t_stack **a);
-int		ft_find_index(t_stack *a, int n);
-
-// ft_lib.c
-
-int			ft_list_size(t_stack *lst);
 t_stack		*ft_list_new(int n);
-t_stack		*ft_list_last(t_stack *lst);
 void		ft_list_add_back(t_stack **lst, t_stack *new);
 void		ft_list_add_front(t_stack **lst, t_stack *new);
+int			ft_list_size(t_stack *lst);
+t_stack		*ft_list_last(t_stack *lst);
 
-// ft_lib_2.c
+// ft_list_lib_2.c
 
+int			ft_find_index(t_stack *a, int n);
 int			ft_list_min(t_stack *a);
 int			ft_list_max(t_stack *a);
 void		ft_list_clear(t_stack **lst);
-void		ft_free_strs(char **lst);
-void		ft_error(int err);
 
-// ft_lib_3.c
+// ft_lib.c
 
 int			ft_atoi_strict(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 int			ft_isdigit(int c);
+
+// ft_lib_2.c
+
+void		ft_free_strs(char **lst);
+void		ft_error(int err);
 
 // ft_split.c
 

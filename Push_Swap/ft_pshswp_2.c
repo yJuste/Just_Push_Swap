@@ -28,9 +28,10 @@ void	ft_sort(t_stack **a)
 		ft_sort_three(a);
 	else
 	{
-		b = ft_sort_b(a); // trie b
+		b = ft_sort_b(a, &b); // trie b
+		/*
 		a = ft_sort_a(a, &b); // prend b et trie a
-		i = ft_find_index(*a, ft_list_min(*a)); // trouve le plus petit index et rotate de la bonne maniere
+		i = ft_find_index(*a, ft_list_min(*a));
 		if (i < ft_list_size(*a) - i)
 		{
 			while ((*a)->nbr != ft_list_min(*a))
@@ -40,7 +41,7 @@ void	ft_sort(t_stack **a)
 		{
 			while ((*a)->nbr != ft_list_min(*a))
 				ft_rra(a, 0);
-		}
+		}*/
 	}
 	return ;
 }
