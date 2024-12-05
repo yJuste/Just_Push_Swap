@@ -53,8 +53,8 @@ void	ft_ss(t_stack **a, t_stack **b, int flg)
 	int		flg_2;
 
 	flg_2 = 1;
-	ft_sa(a, b, flg_2);
-	ft_sb(a, b, flg_2);
+	ft_sa(a, flg_2);
+	ft_sb(b, flg_2);
 	if (flg == 0)
 		write(1, "ss\n", 3);
 }

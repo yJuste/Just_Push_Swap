@@ -12,20 +12,23 @@
 #include "ft_pshswp.h"
 
 // --------------------------PROTOTYPE--------------------------
-t_stack		*ft_sort_b(t_stack **a, t_stack **b);
+t_stack		*ft_sort_b(t_stack **a);
 void		ft_sort_b_next(t_stack **a, t_stack **b);
 int			ft_sort_b_parse(t_stack *a, t_stack *b);
 int			ft_find_place_b(t_stack *b, int n);
 // -------------------------------------------------------------
 
-t_stack	*ft_sort_b(t_stack **a, t_stack **b)
+t_stack	*ft_sort_b(t_stack **a)
 {
+	t_stack		*b;
+
+	b = NULL;
 	if (ft_list_size(*a) > 3 && !ft_issorted(*a))
-		ft_pb(a, b, 0);
+		ft_pb(a, &b, 0);
 	if (ft_list_size(*a) > 3 && !ft_issorted(*a))
-		ft_pb(a, b, 0);
+		ft_pb(a, &b, 0);
 	if (ft_list_size(*a) > 3 && !ft_issorted(*a))
-		ft_sort_b_next(a, b);
+		ft_sort_b_next(a, &b);
 	if (!ft_issorted(*a))
 		ft_sort_three(a);
 	return (b);

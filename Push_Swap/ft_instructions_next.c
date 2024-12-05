@@ -39,7 +39,7 @@ void	ft_rb(t_stack **b, int flg)
 	if (!*b || !(*b)->next)
 		return ;
 	tmp = *b;
-	*b = ft_lstlast(*b);
+	*b = ft_list_last(*b);
 	(*b)->next = tmp;
 	*b = tmp->next;
 	tmp->next = NULL;
@@ -52,8 +52,8 @@ void	ft_rr(t_stack **a, t_stack **b, int flg)
 	int		flg_2;
 
 	flg_2 = 1;
-	ft_ra(a, b, flg_2);
-	ft_rb(a, b, flg_2);
+	ft_ra(a, flg_2);
+	ft_rb(b, flg_2);
 	if (flg == 0)
 		write(1, "rr\n", 3);
 }

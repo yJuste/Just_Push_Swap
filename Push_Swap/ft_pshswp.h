@@ -54,7 +54,7 @@ void		ft_sort_three(t_stack **a);
 
 // ft_sort_b.c
 
-t_stack		*ft_sort_b(t_stack **a, t_stack **b);
+t_stack		*ft_sort_b(t_stack **a);
 void		ft_sort_b_next(t_stack **a, t_stack **b);
 int			ft_sort_b_parse(t_stack *a, t_stack *b);
 int			ft_find_place_b(t_stack *b, int n);

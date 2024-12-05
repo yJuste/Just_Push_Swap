@@ -28,7 +28,7 @@ void	ft_sort(t_stack **a)
 		ft_sort_three(a);
 	else
 	{
-		b = ft_sort_b(a, &b); // trie b
+		b = ft_sort_b(a); // trie b
 		/*
 		a = ft_sort_a(a, &b); // prend b et trie a
 		i = ft_find_index(*a, ft_list_min(*a));

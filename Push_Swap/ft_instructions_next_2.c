@@ -72,8 +72,8 @@ void	ft_rrr(t_stack **a, t_stack **b, int flg)
 	int		flg_2;
 
 	flg_2 = 1;
-	ft_rra(a, b, flg_2);
-	ft_rrb(a, b, flg_2);
+	ft_rra(a, flg_2);
+	ft_rrb(b, flg_2);
 	if (flg == 0)
 		write(1, "rrr\n", 4);
 }
