@@ -117,8 +117,8 @@ t_stack	**ft_sort_a(t_flag *flg, t_stack **a, t_stack **b)
 
 int	ft_find_place_a(t_stack *a, int n)
 {
-	int		i;
-	t_stack	*tmp;
+	int			i;
+	t_stack		*tmp;
 
 	i = 1;
 	if (n < a->nbr && n > ft_list_last(a)->nbr)

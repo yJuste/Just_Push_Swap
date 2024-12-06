@@ -55,6 +55,8 @@ t_stack	*ft_init(int argc, char **argv)
 		i = 1;
 		while (i < argc)
 		{
+			if (argv[i] == "")
+				;
 			j = ft_atoi_strict(argv[i]);
 			ft_list_add_back(&a, ft_list_new(j));
 			i++;

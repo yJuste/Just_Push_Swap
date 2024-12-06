@@ -32,7 +32,7 @@ int	ft_apply_rarb(t_stack **a, t_stack **b, int c, char s)
 			ft_ra(a, 0);
 		ft_pa(a, b);
 	}
-	else
+	if (s == 'b')
 	{
 		while ((*a)->nbr != c && ft_find_place_b(*b, c) > 0)
 			ft_rr(a, b);
@@ -57,7 +57,7 @@ int	ft_apply_rrarrb(t_stack **a, t_stack **b, int c, char s)
 			ft_rra(a, 0);
 		ft_pa(a, b);
 	}
-	else
+	if (s == 'b')
 	{
 		while ((*a)->nbr != c && ft_find_place_b(*b, c) > 0)
 			ft_rrr(a, b);

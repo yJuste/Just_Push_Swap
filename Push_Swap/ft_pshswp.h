@@ -21,10 +21,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-// My library
-
-# include "Printf/ft_printf.h"
-
 // Structures
 
 typedef struct s_stack

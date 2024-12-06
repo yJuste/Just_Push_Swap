@@ -17,45 +17,36 @@ SRC =	ft_pshswp.c			\
 
 OBJ = $(SRC:.c=.o)
 
-PRINTF_DIR = Printf
-PRINTF = libftprintf.a
-
-
 RESET			= "\033[0m"
 GREEN			= "\033[32m"	# Green
 RED			= "\033[31m"	# Red
 
+all: $(NAME)
 
-all: $(NAME) $(PRINTF)
-
-$(PRINTF):
-	@$(MAKE) -C $(PRINTF_DIR)
-
-$(NAME): $(OBJ) $(PRINTF)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L $(PRINTF_DIR) -lftprintf
-	@echo $(GREEN)"--- EXECUTABLE ./$(NAME) is ready ---"$(RESET)
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	@echo $(GREEN)"--- EXECUTABLE ./$(NAME) is ready --- `make help`"$(RESET)
 
 clean:
-	@rm -f $(OBJ)
-	@$(MAKE) -C $(PRINTF_DIR) clean
+	rm -f $(OBJ)
 
 fclean: clean
-	@rm -f $(NAME)
-	@$(MAKE) -C $(PRINTF_DIR) fclean
+	rm -f $(NAME)
 	@echo $(RED)"--- EXECUTABLE ./$(NAME) is removed ---"$(RESET)
 
 re: fclean all
 
 rf: re
-	@rm -f $(OBJ)
-	@rm -f $(NAME)
-	@$(MAKE) -C $(PRINTF_DIR) fclean
+	rm -f $(OBJ)
+	rm -f $(NAME)
 	@echo $(RED)"--- EXECUTABLE ./$(NAME) is removed ---"$(RESET)
 
 s:
 	ls -lh $(NAME)
 
 help:
-	head -n 15 ft_pshswp.c
+	@echo $(GREEN)
+	@head -n 15 ft_pshswp.c
+	@echo $(RESET)
 
 .PHONY: all clean fclean re rf s

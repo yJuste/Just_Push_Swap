@@ -65,7 +65,7 @@ int	ft_list_max(t_stack *a)
 void	ft_list_clear(t_stack **lst)
 {
 	t_stack		*next;
-	
+
 	if (!lst)
 		return ;
 	while (*lst)

@@ -35,7 +35,6 @@ void	ft_sa(t_stack **a, int flg)
 	(*a)->next = tmp;
 	if (flg == 0)
 		write(1, "sa\n", 3);
-	return ;
 }
 
 /*	|------------------------------|

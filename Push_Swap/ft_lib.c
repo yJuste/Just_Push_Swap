@@ -23,8 +23,8 @@ int			ft_isdigit(int c);
 
 int	ft_atoi_strict(const char *str)
 {
-	int				sign;
-	long long int	res;
+	int					sign;
+	long long int		res;
 
 	res = 0;
 	sign = 1;
