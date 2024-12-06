@@ -14,14 +14,14 @@
 #include "ft_pshswp.h"
 
 // ----------------------PROTOTYPE----------------------
-int			ft_atoi_strict(const char *str);
+int			ft_atoi_strict(const char *str, t_stack **a, char **argv, int flag);
 void		*ft_calloc(size_t count, size_t size);
 void		ft_free_strs(char **lst);
-void		ft_error(int err);
+void		ft_error(int err, t_stack **a, char **argv, int flag);
 int			ft_isdigit(int c);
 // -----------------------------------------------------
 
-int	ft_atoi_strict(const char *str)
+int	ft_atoi_strict(const char *str, t_stack **a, char **argv, int flag)
 {
 	int					sign;
 	long long int		res;
@@ -37,13 +37,13 @@ int	ft_atoi_strict(const char *str)
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
-			ft_error(2);
+			ft_error(2, a, argv, flag);
 		res = res * 10 + *str - '0';
 		str++;
 	}
 	if ((sign * res) > 2147483647
 		|| (sign * res) < -2147483648)
-		ft_error(3);
+		ft_error(3, a, argv, flag);
 	return (sign * res);
 }
 
@@ -84,8 +84,15 @@ void	ft_free_strs(char **str)
 	*str = NULL;
 }
 
-void	ft_error(int err)
+void	ft_error(int err, t_stack **a, char **argv, int flag)
 {
+	if (flag == 2 && argv)
+	{
+		ft_free_strs(argv);
+		free(argv);
+	}
+	if (*a)
+		ft_list_clear(a);
 	write(2, "Error\n", 6);
 	exit(err);
 }

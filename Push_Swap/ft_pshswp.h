@@ -93,10 +93,10 @@ void		ft_rrr(t_stack **a, t_stack **b);
 
 // ft_lib.c
 
-int			ft_atoi_strict(const char *str);
+int			ft_atoi_strict(const char *str, t_stack **a, char **argv, int flag);
 void		*ft_calloc(size_t count, size_t size);
 void		ft_free_strs(char **lst);
-void		ft_error(int err);
+void		ft_error(int err, t_stack **a, char **argv, int flag);
 int			ft_isdigit(int c);
 
 // ft_list_lib.c

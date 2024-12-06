@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	if (!a || ft_duplicate(a))
 	{
 		ft_list_clear(&a);
-		ft_error(4);
+		ft_error(4, &a, argv, 0);
 	}
 	if (!ft_issorted(a))
 		ft_sort(&a);
@@ -47,7 +47,7 @@ t_stack	*ft_init(int argc, char **argv)
 
 	a = NULL;
 	if (argc < 2)
-		ft_error(1);
+		ft_error(1, &a, argv, 0);
 	if (argc == 2)
 		a = ft_two_params(argv);
 	else
@@ -55,9 +55,9 @@ t_stack	*ft_init(int argc, char **argv)
 		i = 1;
 		while (i < argc)
 		{
-			if (argv[i] == "")
-				;
-			j = ft_atoi_strict(argv[i]);
+			//if (argv[i] == "")
+			//	ft_error(5);
+			j = ft_atoi_strict(argv[i], &a, argv, 1);
 			ft_list_add_back(&a, ft_list_new(j));
 			i++;
 		}
@@ -77,7 +77,7 @@ t_stack	*ft_two_params(char **argv)
 	tmp = ft_split(argv[1], ' ');
 	while (tmp[i])
 	{
-		j = ft_atoi_strict(tmp[i]);
+		j = ft_atoi_strict(tmp[i], &a, tmp, 2);
 		ft_list_add_back(&a, ft_list_new(j));
 		i++;
 	}
