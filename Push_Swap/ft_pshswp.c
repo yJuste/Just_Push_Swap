@@ -29,10 +29,7 @@ int	main(int argc, char **argv)
 
 	a = ft_init(argc, argv);
 	if (!a || ft_duplicate(a))
-	{
-		ft_list_clear(&a);
 		ft_error(4, &a, argv, 0);
-	}
 	if (!ft_issorted(a))
 		ft_sort(&a);
 	ft_list_clear(&a);
