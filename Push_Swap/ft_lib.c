@@ -13,13 +13,13 @@
 /* ************************************************************************** */
 #include "ft_pshswp.h"
 
-// ----------------------PROTOTYPE----------------------
+// ----------------------------------PROTOTYPE----------------------------------
 int			ft_atoi_strict(const char *str, t_stack **a, char **argv, int flag);
 void		*ft_calloc(size_t count, size_t size);
 void		ft_free_strs(char **lst);
 void		ft_error(int err, t_stack **a, char **argv, int flag);
 int			ft_isdigit(int c);
-// -----------------------------------------------------
+// -----------------------------------------------------------------------------
 
 int	ft_atoi_strict(const char *str, t_stack **a, char **argv, int flag)
 {
@@ -34,6 +34,8 @@ int	ft_atoi_strict(const char *str, t_stack **a, char **argv, int flag)
 		sign = -1;
 	if (*str == '+' || *str == '-')
 		str++;
+	if (!*str)
+		ft_error(2, a, argv, flag);
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
