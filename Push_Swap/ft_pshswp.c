@@ -44,7 +44,7 @@ t_stack	*ft_init(int argc, char **argv)
 
 	a = NULL;
 	if (argc < 2)
-		ft_error(1, &a, argv, 0);
+		exit(6);
 	if (argc == 2)
 		a = ft_two_params(argv);
 	else
