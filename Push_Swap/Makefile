@@ -1,7 +1,7 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 SRC =	ft_pshswp.c			\
 	ft_pshswp_2.c			\
@@ -49,4 +49,4 @@ help:
 	@head -n 15 ft_pshswp.c
 	@echo $(RESET)
 
-.PHONY: all clean fclean re rf s
+.PHONY: all clean fclean re rf s help

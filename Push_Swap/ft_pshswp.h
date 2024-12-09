@@ -25,9 +25,8 @@
 
 typedef struct s_stack
 {
-	long			nbr;
-	long			index;
-	struct s_stack	*next;
+	long				nbr;
+	struct s_stack		*next;
 }	t_stack;
 
 typedef struct s_flag

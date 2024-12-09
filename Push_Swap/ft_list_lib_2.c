@@ -30,7 +30,6 @@ int	ft_find_index(t_stack *a, int n)
 		i++;
 		a = a->next;
 	}
-	a->index = 0;
 	return (i);
 }
 
