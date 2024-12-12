@@ -59,19 +59,19 @@ void		ft_sort_b_next(t_flag *flag, t_stack **a, t_stack **b);
 int			ft_find_place_b(t_stack *b, int n);
 int			ft_find_place_a(t_stack *a, int n);
 
-// ft_apply.c
-
-int			ft_apply_rarb(t_stack **a, t_stack **b, int c, char s);
-int			ft_apply_rrarrb(t_stack **a, t_stack **b, int c, char s);
-int			ft_apply_rrarb(t_stack **a, t_stack **b, int c, char s);
-int			ft_apply_rarrb(t_stack **a, t_stack **b, int c, char s);
-
 // ft_is.c
 
-int			ft_is_rarb(t_stack *a, t_stack *b, int c, char s);
-int			ft_is_rrarrb(t_stack *a, t_stack *b, int c, char s);
-int			ft_is_rrarb(t_stack *a, t_stack *b, int c, char s);
+int			ft_is_rr(t_stack *a, t_stack *b, int c, char s);
+int			ft_is_rrr(t_stack *a, t_stack *b, int c, char s);
 int			ft_is_rarrb(t_stack *a, t_stack *b, int c, char s);
+int			ft_is_rrarb(t_stack *a, t_stack *b, int c, char s);
+
+// ft_push.c
+
+int			ft_push_rr(t_stack **a, t_stack **b, int c, char s);
+int			ft_push_rrr(t_stack **a, t_stack **b, int c, char s);
+int			ft_push_rarrb(t_stack **a, t_stack **b, int c, char s);
+int			ft_push_rrarb(t_stack **a, t_stack **b, int c, char s);
 
 // ft_instructions.c
 

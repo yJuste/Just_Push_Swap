@@ -7,7 +7,7 @@ SRC =	ft_pshswp.c			\
 	ft_pshswp_2.c			\
 	ft_pshswp_3.c			\
 	ft_is.c				\
-	ft_apply.c			\
+	ft_push.c			\
 	ft_instructions.c		\
 	ft_instructions_next.c		\
 	ft_lib.c			\
@@ -18,8 +18,8 @@ SRC =	ft_pshswp.c			\
 OBJ = $(SRC:.c=.o)
 
 RESET			= "\033[0m"
-GREEN			= "\033[32m"	# Green
-RED			= "\033[31m"	# Red
+GREEN			= "\033[92m"	# Green
+RED			= "\033[91m"	# Red
 
 all: $(NAME)
 

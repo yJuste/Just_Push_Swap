@@ -79,15 +79,15 @@ int	ft_parse(t_stack *a, t_stack *b, char s)
 	else
 		tmp = a;
 	if (s == 'a')
-		i = ft_is_rrarrb(a, b, b->nbr, 'a');
+		i = ft_is_rrr(a, b, b->nbr, 'a');
 	else
-		i = ft_is_rrarrb(a, b, a->nbr, 'b');
+		i = ft_is_rrr(a, b, a->nbr, 'b');
 	while (tmp)
 	{
-		if (i > ft_is_rarb(a, b, tmp->nbr, s))
-			i = ft_is_rarb(a, b, tmp->nbr, s);
-		if (i > ft_is_rrarrb(a, b, tmp->nbr, s))
-			i = ft_is_rrarrb(a, b, tmp->nbr, s);
+		if (i > ft_is_rr(a, b, tmp->nbr, s))
+			i = ft_is_rr(a, b, tmp->nbr, s);
+		if (i > ft_is_rrr(a, b, tmp->nbr, s))
+			i = ft_is_rrr(a, b, tmp->nbr, s);
 		if (i > ft_is_rarrb(a, b, tmp->nbr, s))
 			i = ft_is_rarrb(a, b, tmp->nbr, s);
 		if (i > ft_is_rrarb(a, b, tmp->nbr, s))

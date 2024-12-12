@@ -50,14 +50,14 @@ void	ft_sort_b_next(t_flag *flg, t_stack **a, t_stack **b)
 		i = ft_parse(*a, *b, flg->b);
 		while (i >= 0)
 		{
-			if (i == ft_is_rarb(*a, *b, tmp->nbr, flg->b))
-				i = ft_apply_rarb(a, b, tmp->nbr, flg->b);
-			else if (i == ft_is_rrarrb(*a, *b, tmp->nbr, flg->b))
-				i = ft_apply_rrarrb(a, b, tmp->nbr, flg->b);
+			if (i == ft_is_rr(*a, *b, tmp->nbr, flg->b))
+				i = ft_push_rr(a, b, tmp->nbr, flg->b);
+			else if (i == ft_is_rrr(*a, *b, tmp->nbr, flg->b))
+				i = ft_push_rrr(a, b, tmp->nbr, flg->b);
 			else if (i == ft_is_rarrb(*a, *b, tmp->nbr, flg->b))
-				i = ft_apply_rarrb(a, b, tmp->nbr, flg->b);
+				i = ft_push_rarrb(a, b, tmp->nbr, flg->b);
 			else if (i == ft_is_rrarb(*a, *b, tmp->nbr, flg->b))
-				i = ft_apply_rrarb(a, b, tmp->nbr, flg->b);
+				i = ft_push_rrarb(a, b, tmp->nbr, flg->b);
 			else
 				tmp = tmp->next;
 		}
@@ -100,14 +100,14 @@ t_stack	**ft_sort_a(t_flag *flg, t_stack **a, t_stack **b)
 		i = ft_parse(*a, *b, flg->a);
 		while (i >= 0)
 		{
-			if (i == ft_is_rarb(*a, *b, tmp->nbr, flg->a))
-				i = ft_apply_rarb(a, b, tmp->nbr, flg->a);
+			if (i == ft_is_rr(*a, *b, tmp->nbr, flg->a))
+				i = ft_push_rr(a, b, tmp->nbr, flg->a);
+			else if (i == ft_is_rrr(*a, *b, tmp->nbr, flg->a))
+				i = ft_push_rrr(a, b, tmp->nbr, flg->a);
 			else if (i == ft_is_rarrb(*a, *b, tmp->nbr, flg->a))
-				i = ft_apply_rarrb(a, b, tmp->nbr, flg->a);
-			else if (i == ft_is_rrarrb(*a, *b, tmp->nbr, flg->a))
-				i = ft_apply_rrarrb(a, b, tmp->nbr, flg->a);
+				i = ft_push_rarrb(a, b, tmp->nbr, flg->a);
 			else if (i == ft_is_rrarb(*a, *b, tmp->nbr, flg->a))
-				i = ft_apply_rrarb(a, b, tmp->nbr, flg->a);
+				i = ft_push_rrarb(a, b, tmp->nbr, flg->a);
 			else
 				tmp = tmp->next;
 		}
