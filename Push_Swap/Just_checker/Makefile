@@ -1,7 +1,7 @@
 NAME = ../checker
 
 CC = cc
-CFLAGS = -g
+CFLAGS = -Wall -Wextra -Werror
 
 SRC =	ft_checker.c				\
 	ft_checker_next.c			\

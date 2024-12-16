@@ -1,7 +1,7 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -g
+CFLAGS = -Wall -Wextra -Werror
 
 SRC =	ft_pshswp.c			\
 	ft_pshswp_2.c			\
