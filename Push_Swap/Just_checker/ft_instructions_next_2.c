@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_instructions_next.c                             :+:      :+:    :+:   */
+/*   ft_instructions_next_2.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -9,50 +9,70 @@
 /*   Updated:   by Just'                              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*   • Movements : RA RB RR                                          PART 2   */
+/*   • Movements : RRA RRB RRR                                       PART 3   */
 /* ************************************************************************** */
-#include "ft_pshswp.h"
+#include "ft_checker.h"
 
-// -----------------------PROTOTYPE----------------------
-void		ft_ra(t_stack **a, int flg);
-void		ft_rb(t_stack **b, int flg);
-void		ft_rr(t_stack **a, t_stack **b, int flg);
-// ------------------------------------------------------
+// -----------------------PROTOTYPE-----------------------
+void		ft_rra(t_stack **a, int flg);
+void		ft_rrb(t_stack **b, int flg);
+void		ft_rrr(t_stack **a, t_stack **b, int flg);
+// -------------------------------------------------------
 
-void	ft_ra(t_stack **a, int flg)
+void	ft_rra(t_stack **a, int flg)
 {
+	int			i;
 	t_stack		*tmp;
 
 	if (!*a || !(*a)->next)
 		return ;
+	i = 0;
 	tmp = *a;
-	*a = ft_list_last(*a);
+	while ((*a)->next)
+	{
+		*a = (*a)->next;
+		i++;
+	}
 	(*a)->next = tmp;
-	*a = tmp->next;
+	while (i > 1)
+	{
+		tmp = tmp->next;
+		i--;
+	}
 	tmp->next = NULL;
 	if (flg == 0)
-		write(1, "ra\n", 3);
+		write(1, "rra\n", 4);
 }
 
-void	ft_rb(t_stack **b, int flg)
+void	ft_rrb(t_stack **b, int flg)
 {
+	int			i;
 	t_stack		*tmp;
 
 	if (!*b || !(*b)->next)
 		return ;
+	i = 0;
 	tmp = *b;
-	*b = ft_list_last(*b);
+	while ((*b)->next)
+	{
+		i++;
+		*b = (*b)->next;
+	}
 	(*b)->next = tmp;
-	*b = tmp->next;
+	while (i > 1)
+	{
+		tmp = tmp->next;
+		i--;
+	}
 	tmp->next = NULL;
 	if (flg == 0)
-		write(1, "rb\n", 3);
+		write(1, "rrb\n", 4);
 }
 
-void	ft_rr(t_stack **a, t_stack **b, int flg)
+void	ft_rrr(t_stack **a, t_stack **b, int flg)
 {
-	ft_ra(a, 1);
-	ft_rb(b, 1);
+	ft_rra(a, 1);
+	ft_rrb(b, 1);
 	if (flg == 0)
-		write(1, "rr\n", 3);
+		write(1, "rrr\n", 4);
 }

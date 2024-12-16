@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_instructions_next.c                             :+:      :+:    :+:   */
+/*   ft_list_lib_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -9,50 +9,69 @@
 /*   Updated:   by Just'                              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*   • Movements : RA RB RR                                          PART 2   */
+/*   • Second lib for chained list.                                           */
 /* ************************************************************************** */
-#include "ft_pshswp.h"
+#include "ft_checker.h"
 
 // -----------------------PROTOTYPE----------------------
-void		ft_ra(t_stack **a, int flg);
-void		ft_rb(t_stack **b, int flg);
-void		ft_rr(t_stack **a, t_stack **b, int flg);
+int			ft_find_index(t_stack *a, int n);
+int			ft_list_min(t_stack *a);
+int			ft_list_max(t_stack *a);
+void		ft_list_clear(t_stack **lst);
 // ------------------------------------------------------
 
-void	ft_ra(t_stack **a, int flg)
+int	ft_find_index(t_stack *a, int n)
 {
-	t_stack		*tmp;
+	int		i;
 
-	if (!*a || !(*a)->next)
-		return ;
-	tmp = *a;
-	*a = ft_list_last(*a);
-	(*a)->next = tmp;
-	*a = tmp->next;
-	tmp->next = NULL;
-	if (flg == 0)
-		write(1, "ra\n", 3);
+	i = 0;
+	while (a->nbr != n)
+	{
+		i++;
+		a = a->next;
+	}
+	return (i);
 }
 
-void	ft_rb(t_stack **b, int flg)
+int	ft_list_min(t_stack *a)
 {
-	t_stack		*tmp;
+	int		i;
 
-	if (!*b || !(*b)->next)
-		return ;
-	tmp = *b;
-	*b = ft_list_last(*b);
-	(*b)->next = tmp;
-	*b = tmp->next;
-	tmp->next = NULL;
-	if (flg == 0)
-		write(1, "rb\n", 3);
+	i = a->nbr;
+	while (a)
+	{
+		if (a->nbr < i)
+			i = a->nbr;
+		a = a->next;
+	}
+	return (i);
 }
 
-void	ft_rr(t_stack **a, t_stack **b, int flg)
+int	ft_list_max(t_stack *a)
 {
-	ft_ra(a, 1);
-	ft_rb(b, 1);
-	if (flg == 0)
-		write(1, "rr\n", 3);
+	int		i;
+
+	i = a->nbr;
+	while (a)
+	{
+		if (a->nbr > i)
+			i = a->nbr;
+		a = a->next;
+	}
+	return (i);
+}
+
+void	ft_list_clear(t_stack **lst)
+{
+	t_stack		*next;
+
+	if (!lst)
+		return ;
+	while (*lst)
+	{
+		next = (*lst)->next;
+		free(*lst);
+		*lst = next;
+	}
+	*lst = NULL;
 }

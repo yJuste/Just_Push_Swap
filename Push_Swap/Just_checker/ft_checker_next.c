@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pshswp.c                                        :+:      :+:    :+:   */
+/*   ft_checker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -9,31 +9,15 @@
 /*   Updated:   by Just'                              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*   • Sort a pile A with another pile B.                                     */
-/*   • ./a.out [ numbers ]                                                    */
-/*      -> numbers    [ int ]                                                 */
-/* ************************************************************************** */
-#include "ft_pshswp.h"
+#include "ft_checker.h"
 
-// ------------------PROTOTYPE-------------------
+// ---------------------------PROTOTYPE---------------------------
 t_stack		*ft_init(int argc, char **argv);
 t_stack		*ft_two_params(char **argv);
 int			ft_duplicate(t_stack *a);
 int			ft_issorted(t_stack *a);
-// ----------------------------------------------
-
-int	main(int argc, char **argv)
-{
-	t_stack		*a;
-
-	a = ft_init(argc, argv);
-	if (!a || ft_duplicate(a))
-		ft_error(4, &a, argv, 0);
-	if (!ft_issorted(a))
-		ft_sort(&a);
-	ft_list_clear(&a);
-	return (0);
-}
+int			ft_strcmp(const char *s1, const char *s2);
+// ---------------------------------------------------------------
 
 t_stack	*ft_init(int argc, char **argv)
 {
@@ -111,4 +95,14 @@ int	ft_issorted(t_stack *a)
 		a = a->next;
 	}
 	return (1);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int		i;
+
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }

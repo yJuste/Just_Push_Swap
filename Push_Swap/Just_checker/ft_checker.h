@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pshswp.h                                        :+:      :+:    :+:   */
+/*   ft_checker.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -9,19 +9,19 @@
 /*   Updated:   by Just'                              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*   • Sort a pile A with another pile B.                                     */
-/*   • ./a.out [ numbers ]                                                    */
-/*      -> numbers    [ int ]                                                 */
-/* ************************************************************************** */
-#ifndef FT_PSHSWP_H
-# define FT_PSHSWP_H
+#ifndef FT_CHECKER_H
+# define FT_CHECKER_H
 
 // Standard Libraries
 
 # include <unistd.h>
 # include <stdlib.h>
 
-// Structures
+// My library
+
+# include "Get_Next_Line/get_next_line.h"
+
+// Structure
 
 typedef struct s_stack
 {
@@ -29,48 +29,19 @@ typedef struct s_stack
 	struct s_stack		*next;
 }	t_stack;
 
-typedef struct s_flag
-{
-	char		a;
-	char		b;
-}	t_flag;
+// ft_checker.c
 
-//	---------- MY CODE ----------
+void		ft_checker(t_stack **a, t_stack **b);
+void		ft_checker_next(t_stack **a, t_stack **b, char *line);
+void		ft_checker_error(int err, t_stack **a, t_stack **b, char *line);
 
-// ft_pshswp.c
+// ft_checker_next.c
 
 t_stack		*ft_init(int argc, char **argv);
 t_stack		*ft_two_params(char **argv);
 int			ft_duplicate(t_stack *a);
 int			ft_issorted(t_stack *a);
-
-// ft_pshswp_2.c
-
-void		ft_sort(t_stack **a);
-void		ft_sort_three(t_stack **a);
-int			ft_parse(t_stack *a, t_stack *b, char s);
-
-// ft_pshswp_3.c
-
-t_stack		*ft_sort_b(t_flag *flag, t_stack **a);
-t_stack		**ft_sort_a(t_flag *flag, t_stack **a, t_stack **b);
-void		ft_sort_b_next(t_flag *flag, t_stack **a, t_stack **b);
-int			ft_find_place_b(t_stack *b, int n);
-int			ft_find_place_a(t_stack *a, int n);
-
-// ft_is.c
-
-int			ft_is_rr(t_stack *a, t_stack *b, int c, char s);
-int			ft_is_rrr(t_stack *a, t_stack *b, int c, char s);
-int			ft_is_rarrb(t_stack *a, t_stack *b, int c, char s);
-int			ft_is_rrarb(t_stack *a, t_stack *b, int c, char s);
-
-// ft_push.c
-
-int			ft_push_rr(t_stack **a, t_stack **b, int c, char s);
-int			ft_push_rrr(t_stack **a, t_stack **b, int c, char s);
-int			ft_push_rarrb(t_stack **a, t_stack **b, int c, char s);
-int			ft_push_rrarb(t_stack **a, t_stack **b, int c, char s);
+int			ft_strcmp(const char *s1, const char *s2);
 
 // ft_instructions.c
 
@@ -122,5 +93,11 @@ size_t		ft_count_words(const char *s, char c);
 char		**ft_split_next(char **out, const char *s, char c);
 char		**ft_split_error(char **out, size_t k);
 char		*ft_strncpy(char *dest, const char *src, size_t n);
+
+// get_next_line.c
+
+char		*get_next_line(int fd);
+int			ft_read_buffer(t_buf *buf, int fd);
+char		*ft_strdup(const char *s1);
 
 #endif
