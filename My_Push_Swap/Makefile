@@ -1,7 +1,7 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -g
+CFLAGS = -Wall -Wextra -Werror
 
 SRC =	ft_pushswap.c			\
 	ft_pushswap_next.c		\

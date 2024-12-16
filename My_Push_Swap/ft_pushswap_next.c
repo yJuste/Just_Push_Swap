@@ -17,7 +17,7 @@
 void		ft_sort(t_stack **a, int reverse);
 t_stack		*ft_sort_b(t_stack **a);
 void		ft_sort_list(t_stack **a, t_stack **b);
-int			ft_sort_list_next(t_stack *a, t_stack *b, int *reverse, int *min);
+int			ft_sort_list_next(t_stack *b, int *reverse, int *min);
 void		ft_sort_three(t_stack **a);
 // ---------------------------------------------------------------------------
 
@@ -60,7 +60,7 @@ void	ft_sort_list(t_stack **a, t_stack **b)
 	reverse = 0;
 	while (*b)
 	{
-		i = ft_sort_list_next(*a, *b, &reverse, &min);
+		i = ft_sort_list_next(*b, &reverse, &min);
 		while (i > 0)
 		{
 			if (reverse == 0)
@@ -77,7 +77,7 @@ void	ft_sort_list(t_stack **a, t_stack **b)
 	}
 }
 
-int	ft_sort_list_next(t_stack *a, t_stack *b, int *reverse, int *min)
+int	ft_sort_list_next(t_stack *b, int *reverse, int *min)
 {
 	int			i;
 
