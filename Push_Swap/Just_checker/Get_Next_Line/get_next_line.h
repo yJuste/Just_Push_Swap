@@ -32,7 +32,7 @@ typedef struct s_buf
 	int		buf_pos;
 }	t_buf;
 
-// get_next_line_bonus.c
+// get_next_line.c
 
 char	*get_next_line(int fd);
 int		ft_read_buffer(t_buf *buf, int fd);
