@@ -36,13 +36,12 @@ int	ft_atoi_strict(const char *str, t_stack **a, char **argv, int flag)
 		str++;
 	if (!*str)
 		ft_error(2, a, argv, flag);
-	while (*str)
-	{
-		if (!ft_isdigit(*str))
-			ft_error(2, a, argv, flag);
-		res = res * 10 + *str - '0';
+	while (*str >= '0' && *str <= '9')
+		res = res * 10 + *str++ - '0';
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
-	}
+	if (*str != '\0')
+		ft_error(2, a, argv, flag);
 	if ((sign * res) > 2147483647
 		|| (sign * res) < -2147483648)
 		ft_error(3, a, argv, flag);
